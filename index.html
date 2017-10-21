@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Leekspin</title>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="manifest.json">
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="apple-mobile-web-app-title" content="Leekspin">
+	<meta name="application-name" content="Leekspin">
+	<meta name="theme-color" content="#FFC29A">
+
+	<meta property="og:title" content="Leekspin">
+	<meta property="og:description" content="Bei der Herstellung wurden keine Porentas verletzt.">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="android-chrome-512x512.png">
+	<meta property="og:image:secure_url" content="android-chrome-512x512.png">
+	<meta property="og:image:width" content="600">
+	<meta property="og:image:height" content="600">
+
+	<style>
+		body {
+			margin: 0;
+			display: flex;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			background: linear-gradient(#FFC29A, #FFD4D4);
+			overflow: hidden;
+		}
+		p {
+			font-size: 1.5rem;
+			font-family: sans-serif;
+			padding: .2rem;
+			margin: 0;
+			/* text-align: center; */
+			position: fixed;
+			bottom: 0;
+			color: rgb(247, 255, 233);
+			background: rgba(0, 0, 0, 0.452)
+		}
+		video {
+			height: 100vh;
+			width: 100vw;
+		}
+	</style>
+</head>
+<body>
+		<video src="leekspin.mp4" autoplay loop></video>
+		<p class="timer">Spinning for 00:00:00</p>
+
+	<script src="easytimer.min.js"></script>
+	<script>
+		var timerText = document.querySelector('.timer');
+
+		function calcVH () {
+			var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+			document.querySelector('body').setAttribute("style", "height:" + vH + "px;");
+		}
+		window.onload = calcVH();
+		window.addEventListener('onorientationchange', calcVH, true);
+		window.addEventListener('resize', calcVH, true);
+
+		var timer = new Timer();
+		timer.start();
+		timer.getTimeValues().toString();
+		timer.addEventListener('secondsUpdated', function (e) {
+				timerText.innerHTML = "Spinning for " + timer.getTimeValues().toString();
+		});
+         
+	</script>
+</body>
+</html>
