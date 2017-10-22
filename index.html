@@ -51,8 +51,8 @@
 			max-width: 80vw;
 			cursor: pointer;
 		}
-		audio {
-			display: none;
+		.audio {
+			display: none!important;
 		}
 		video {
 			height: 100vh;
@@ -62,7 +62,7 @@
 </head>
 <body>
 		<video src="ls.mp4" loop></video>
-		<audio src="ls.mp3" loop></audio>
+		<audio class="audio" src="ls.mp3" loop></audio>
 		<p class="timer">Spinning for 00:00:00</p>
 		<img src="play.svg" alt="" class="play">
 
