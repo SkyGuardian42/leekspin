@@ -43,7 +43,13 @@
 			position: fixed;
 			bottom: 0;
 			color: rgb(247, 255, 233);
-			background: rgba(0, 0, 0, 0.452)
+			background: rgba(0, 0, 0, 0.45)
+		}
+		.play {
+			position: absolute;
+			width: 200px;
+			max-width: 80vw;
+			cursor: pointer;
 		}
 		video {
 			height: 100vh;
@@ -52,24 +58,34 @@
 	</style>
 </head>
 <body>
-		<video src="leekspin.mp4" autoplay loop></video>
+		<video src="leekspin.mp4" loop></video>
 		<p class="timer">Spinning for 00:00:00</p>
+		<img src="play.svg" alt="" class="play">
 
 	<script src="easytimer.min.js"></script>
 	<script>
 		var timerText = document.querySelector('.timer');
-
-		function calcVH () {
-			var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-			document.querySelector('body').setAttribute("style", "height:" + vH + "px;");
-		}
-		window.onload = calcVH();
-		window.addEventListener('onorientationchange', calcVH, true);
-		window.addEventListener('resize', calcVH, true);
-
+		var playButton = document.querySelector('.play');
+		var video = document.querySelector('video');
 		var timer = new Timer();
-		timer.start();
-		timer.getTimeValues().toString();
+
+		playButton.addEventListener('click', function () {
+			timer.start();
+			video.play();
+			playButton.style.display = 'none';
+		});
+
+		// resize body
+		{
+			function calcVH () {
+				var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+				document.querySelector('body').setAttribute("style", "height:" + vH + "px;");
+			}
+			window.onload = calcVH();
+			window.addEventListener('onorientationchange', calcVH, true);
+			window.addEventListener('resize', calcVH, true);			
+		}
+
 		timer.addEventListener('secondsUpdated', function (e) {
 				timerText.innerHTML = "Spinning for " + timer.getTimeValues().toString();
 		});
