@@ -10,10 +10,10 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 	<link rel="manifest" href="manifest.json">
-	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#FDBD9F">
 	<meta name="apple-mobile-web-app-title" content="Leekspin">
 	<meta name="application-name" content="Leekspin">
-	<meta name="theme-color" content="#FFC29A">
+	<meta name="theme-color" content="#FDBD9F">
 
 	<meta property="og:title" content="Leekspin">
 	<meta property="og:description" content="Bei der Herstellung wurden keine Porentas verletzt.">
@@ -59,13 +59,14 @@
 </head>
 <body>
 		<video src="ls.mp4" loop></video>
-		<audio src="ls.mp3" loop autoplay></audio>
+		<audio src="ls.mp3" loop></audio>
 		<p class="timer">Spinning for 00:00:00</p>
 		<img src="play.svg" alt="" class="play">
 
 	<script src="easytimer.min.js"></script>
 	<script>
 		var timerText = document.querySelector('.timer');
+		var audio = document.querySelector('audio');
 		var playButton = document.querySelector('.play');
 		var video = document.querySelector('video');
 		var timer = new Timer();
@@ -73,6 +74,7 @@
 		playButton.addEventListener('click', function () {
 			timer.start();
 			video.play();
+			audio.play();
 			playButton.style.display = 'none';
 		});
 
